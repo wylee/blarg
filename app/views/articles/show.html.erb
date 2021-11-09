@@ -1,0 +1,17 @@
+<h2><%= @article.title %></h2>
+
+<p>
+  <i><%= @article.author %></i>
+</p>
+
+<p>
+  <%= @article.body %>
+</p>
+
+<p>
+  <%= link_to "Delete Article",
+              article_path(@article),
+              method: :delete,
+              data: { confirm: "Are you sure?" }
+  %>
+</p>

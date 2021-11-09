@@ -1,0 +1,18 @@
+<h2>Articles</h2>
+
+<p>
+  <%= link_to 'New Article', new_article_path %>
+</p>
+
+<% if @articles.length > 0  %>
+  <ul>
+    <% @articles.each do |article| %>
+      <li>
+        <%= link_to article.title, article %>
+        <i>by <%= article.author %></i>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="notice">No articles found.</p>
+<% end %>

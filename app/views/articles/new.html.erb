@@ -1,0 +1,26 @@
+<h2>Add Article</h2>
+
+<form action="/articles" accept-charset="UTF-8" method="post">
+  <input type="hidden" name="authenticity_token" value="...">
+
+  <div>
+    <label for="article_title">Title</label><br>
+    <input type="text" name="article[title]" id="article_title" value="<% @article.author %>">
+  </div>
+
+  <div>
+    <label for="article_author">Author</label><br>
+    <input type="text" name="article[author]" id="article_author" value="<% @article.author %>">
+  </div>
+
+  <div>
+    <label for="article_body">Body</label><br>
+    <textarea name="article[body]" id="article_body">
+      <%= @article.body %>
+    </textarea>
+  </div>
+
+  <div>
+    <input type="submit" name="commit" value="Save" data-disable-with="Save">
+  </div>
+</form>
