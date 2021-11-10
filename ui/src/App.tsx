@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
     <div id="App">
       <header>
@@ -27,5 +27,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

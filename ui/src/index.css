@@ -68,6 +68,23 @@ main {
   @apply p-4;
 }
 
+/* Utilities */
+
 .notice {
   @apply p-1 bg-red-50 text-red-600 border rounded border-red-600;
+}
+
+.small {
+  font-size: 85%;
+}
+
+/* Articles */
+.list-article {
+  @apply mb-1 p-1 rounded border border-gray-200;
+}
+.list-article:last-child {
+  @apply mb-0;
+}
+.list-article:nth-child(odd) {
+  @apply bg-gray-100;
 }
