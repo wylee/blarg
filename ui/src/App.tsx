@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, Outlet } from "react-router-dom";
 
 function App() {
   return (
@@ -11,11 +12,18 @@ function App() {
 
       <nav>
         <ul>
-          <li>Articles</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/articles">Articles</Link>
+          </li>
         </ul>
       </nav>
 
-      <main>Content goes here.</main>
+      <main>
+        <Outlet />
+      </main>
     </div>
   );
 }

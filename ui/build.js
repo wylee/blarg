@@ -16,7 +16,7 @@ const proc = require("child_process");
 const esbuild = require("esbuild");
 const dotenv = require("dotenv");
 const postcss = require("postcss");
-const postCssConfig = require("./postcss.config.js")
+const postCssConfig = require("./postcss.config.js");
 
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
 
@@ -64,17 +64,20 @@ const postCssPlugin = {
   name: "postcss",
 
   setup(build) {
-    const root = process.cwd();
-    const outDir = path.join(root, "public", "build");
-    build.onResolve({ filter: /.\.css$/, namespace: "file" }, async (args) => {
-      const filePath = path.resolve(args.resolveDir, args.path);
-      const name = path.basename(filePath);
-      const outFile = path.join(outDir, name);
-      const css = fs.readFileSync(filePath);
-      const result = await postcss(postCssConfig.plugins).process(css, { from: filePath });
-      fs.writeFileSync(outFile, result.css);
+    build.onLoad({ filter: /.\.css$/ }, async (args) => {
+      console.info(`Reading CSS content from ${args.path}...`);
+      const cssContent = fs.readFileSync(args.path);
+      console.info(
+        "Passing CSS content through PostCSS (this may take a while)..."
+      );
+      const result = await postcss(postCssConfig.plugins).process(cssContent, {
+        ...postCssConfig.options,
+        from: args.path,
+      });
+      console.info("Done");
       return {
-        path: outFile,
+        contents: result.css,
+        loader: "css",
       };
     });
   },
@@ -101,5 +104,5 @@ esbuild.build({
   sourcemap: IS_DEV,
   watch: WATCH,
   logLevel: "info",
-  plugins: [dotenvPlugin, typeCheckPlugin, postCssPlugin],
+  plugins: [postCssPlugin, dotenvPlugin, typeCheckPlugin],
 });

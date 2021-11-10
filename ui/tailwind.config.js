@@ -1,9 +1,7 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  purge: [
-    // "./app/**/*.html.erb",
-  ],
+  purge: ["./src/**/*.tsx"],
   darkMode: false,
   theme: {
     screens: {
@@ -12,14 +10,12 @@ module.exports = {
       lg: "976px",
       xl: "1440px",
     },
-
     colors: {
       gray: colors.blueGray,
       blue: colors.sky,
       red: colors.rose,
       pink: colors.fuchsia,
     },
-
     extend: {},
   },
   variants: {
