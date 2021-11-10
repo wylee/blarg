@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import useFetch from "./fetch";
 import { Article } from "./model";
-import {formatDateTime} from "./util";
+import { formatDateTime } from "./util";
 
 export default function ArticleList({ count = 0 }) {
   const [articles, fetching]: [Article[] | null, boolean] = useFetch<Article[]>(
@@ -19,9 +19,7 @@ export default function ArticleList({ count = 0 }) {
                 <Link to={`/articles/${a.id}`}>{a.title}</Link>{" "}
                 <i>by {a.author}</i>
               </p>
-              <p className="small">
-                Created {formatDateTime(a.created_at)}
-              </p>
+              <p className="small">Created {formatDateTime(a.created_at)}</p>
             </li>
           ))}
         </ul>

@@ -29,7 +29,7 @@
     "build": "node build.js",
     "watch": "node build.js --watch",
     "serve": "http-server --port 4000",
-    "prettier": "prettier -w *.js *.json public/*.html public/*.json src",
+    "format": "prettier -w .",
     "clean": "rm -r public/build"
   },
   "eslintConfig": {

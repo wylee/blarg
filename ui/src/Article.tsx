@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { Article } from "./model";
 import useFetch from "./fetch";
-import {formatDateTime} from "./util";
+import { formatDateTime } from "./util";
 
 export default function Article() {
   const params = useParams();
@@ -22,11 +22,11 @@ export default function Article() {
       ) : (
         <>
           <h2>{article.title}</h2>
-          <p><i>by {article.author}</i></p>
-          <p className="small">
-            Created {formatDateTime(article.created_at)}
+          <p>
+            <i>by {article.author}</i>
           </p>
-          <hr/>
+          <p className="small">Created {formatDateTime(article.created_at)}</p>
+          <hr />
           <p>{article.body}</p>
         </>
       )}
