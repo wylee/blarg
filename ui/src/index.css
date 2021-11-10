@@ -1,13 +1,73 @@
+@import "tailwindcss/base";
+/* @import "tailwindcss/components"; */
+/* @import "tailwindcss/utilities"; */
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+body {
+  @apply m-0 p-0 h-screen bg-gray-50 text-gray-700;
+}
+
+a {
+  @apply text-blue-700 no-underline;
+}
+
+h1,
+h2 {
+  @apply mb-1 text-gray-800;
+}
+
+h1 {
+  @apply text-2xl;
+}
+h2 {
+  @apply text-xl;
+}
+
+p {
+  @apply mb-1;
+}
+
+form {
+  @apply p-2 border rounded shadow-sm;
+}
+
+header {
+  @apply flex items-center h-24 p-4 bg-gray-300 border-b border-gray-400 shadow;
+}
+header a {
+  @apply no-underline text-gray-800;
+}
+
+nav > ul {
+  @apply flex items-center border-b border-gray-400;
+}
+nav > ul > li {
+  @apply border-r border-gray-400;
+}
+nav > ul > li > a {
+  @apply block p-4 text-gray-800 no-underline;
+}
+nav > ul > li > a:hover {
+  @apply text-blue-600 underline;
+}
+
+main {
+  @apply p-4;
+}
+
+.notice {
+  @apply p-1 bg-red-50 text-red-600 border rounded border-red-600;
 }

@@ -1,0 +1,112 @@
+/* node_modules/tailwindcss/base.css */
+@tailwind base;
+
+/* src/index.css */
+body {
+  margin: 0;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+code {
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Courier New",
+    monospace;
+}
+body {
+  @apply m-0 p-0 h-screen bg-gray-50 text-gray-700;
+}
+a {
+  @apply text-blue-700 no-underline;
+}
+h1,
+h2 {
+  @apply mb-1 text-gray-800;
+}
+h1 {
+  @apply text-2xl;
+}
+h2 {
+  @apply text-xl;
+}
+p {
+  @apply mb-1;
+}
+form {
+  @apply p-2 border rounded shadow-sm;
+}
+header {
+  @apply flex items-center h-24 p-4 bg-gray-300 border-b border-gray-400 shadow;
+}
+header a {
+  @apply no-underline text-gray-800;
+}
+nav > ul {
+  @apply flex items-center border-b border-gray-400;
+}
+nav > ul > li {
+  @apply border-r border-gray-400;
+}
+nav > ul > li > a {
+  @apply block p-4 text-gray-800 no-underline;
+}
+nav > ul > li > a:hover {
+  @apply text-blue-600 underline;
+}
+main {
+  @apply p-4;
+}
+.notice {
+  @apply p-1 bg-red-50 text-red-600 border rounded border-red-600;
+}
+
+/* src/App.css */
+.App {
+  text-align: center;
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.App-link {
+  color: #61dafb;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/*# sourceMappingURL=bundle.css.map */
