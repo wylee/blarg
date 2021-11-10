@@ -12,11 +12,11 @@
 const fs = require("fs");
 const path = require("path");
 const proc = require("child_process");
-const tmp = require("tmp");
 
 const esbuild = require("esbuild");
 const dotenv = require("dotenv");
 const postcss = require("postcss");
+const postCssConfig = require("./postcss.config.js")
 
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
 
@@ -66,20 +66,17 @@ const postCssPlugin = {
   setup(build) {
     const root = process.cwd();
     const outDir = path.join(root, "public", "build");
-    build.onResolve(
-      { filter: /.\.css$/, namespace: "file" },
-      async (args) => {
-        const filePath = path.resolve(args.resolveDir, args.path);
-        const name = path.basename(filePath);
-        const outFile = path.join(outDir, name);
-        const css = fs.readFileSync(filePath);
-        const result = await postcss().process(css, { from: filePath });
-        fs.writeFileSync(outFile, result.css);
-        return {
-          path: outFile,
-        };
-      }
-    );
+    build.onResolve({ filter: /.\.css$/, namespace: "file" }, async (args) => {
+      const filePath = path.resolve(args.resolveDir, args.path);
+      const name = path.basename(filePath);
+      const outFile = path.join(outDir, name);
+      const css = fs.readFileSync(filePath);
+      const result = await postcss(postCssConfig.plugins).process(css, { from: filePath });
+      fs.writeFileSync(outFile, result.css);
+      return {
+        path: outFile,
+      };
+    });
   },
 };
 

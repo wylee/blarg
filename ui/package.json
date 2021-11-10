@@ -8,9 +8,12 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "autoprefixer": "^10.4.0",
+    "concurrently": "^6.3.0",
     "dotenv": "^10.0.0",
     "esbuild": "^0.13.13",
-    "postcss": "^7",
+    "http-server": "^14.0.0",
+    "postcss": "^8.3.11",
+    "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^14.0.2",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.4.1",
@@ -21,9 +24,11 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "node build.js --watch",
+    "start": "concurrently 'yarn run watch' 'yarn run serve'",
     "build": "node build.js",
-    "eject": "react-scripts eject"
+    "watch": "node build.js --watch",
+    "serve": "http-server --port 4000",
+    "prettier": "prettier -w *.js *.json public/*.html public/*.json scripts src"
   },
   "eslintConfig": {
     "extends": [
