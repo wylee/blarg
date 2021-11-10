@@ -1,0 +1,2 @@
+#!/bin/bash
+printf "Use yarn instead of npm in this project\n" 1>&2
