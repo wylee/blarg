@@ -25,7 +25,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "concurrently 'yarn run watch' 'yarn run serve'",
+    "start": "concurrently 'npm:watch' 'npm:serve'",
     "build": "node build.js",
     "watch": "node build.js --watch",
     "serve": "http-server --port 4000",
