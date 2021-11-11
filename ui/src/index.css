@@ -32,6 +32,7 @@ h2 {
 h1 {
   @apply text-2xl;
 }
+
 h2 {
   @apply text-xl;
 }
@@ -44,9 +45,15 @@ form {
   @apply p-2 border rounded shadow-sm;
 }
 
+input,
+textarea {
+  @apply border border-gray-200 rounded shadow-sm;
+}
+
 header {
   @apply flex items-center h-24 p-4 bg-gray-300 border-b border-gray-400 shadow;
 }
+
 header a {
   @apply no-underline text-gray-800;
 }
@@ -54,18 +61,59 @@ header a {
 nav > ul {
   @apply flex items-center border-b border-gray-400;
 }
+
 nav > ul > li {
   @apply border-r border-gray-400;
 }
+
 nav > ul > li > a {
   @apply block p-4 text-gray-800 no-underline;
 }
+
 nav > ul > li > a:hover {
   @apply text-blue-600 underline;
 }
 
 main {
   @apply p-4;
+}
+
+/* Layout */
+
+.row {
+  @apply flex flex-row;
+}
+
+.row > * {
+  @apply mr-2;
+}
+
+.row > *:last-child {
+  @apply mr-0;
+}
+
+.col {
+  @apply flex flex-col;
+}
+
+.col > * {
+  @apply mb-2;
+}
+
+.col > *:last-child {
+  @apply mb-0;
+}
+
+/* Buttons */
+
+button,
+.button {
+  @apply p-1 border border-gray-400 rounded shadow-sm;
+}
+
+button.primary,
+.button.primary {
+  @apply bg-gray-600 text-gray-50;
 }
 
 /* Utilities */
@@ -79,12 +127,15 @@ main {
 }
 
 /* Articles */
+
 .list-article {
   @apply mb-1 p-1 rounded border border-gray-200;
 }
+
 .list-article:last-child {
   @apply mb-0;
 }
+
 .list-article:nth-child(odd) {
   @apply bg-gray-100;
 }

@@ -1,11 +1,18 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-async function fetchData(url: string) {
-  const response = await fetch(url, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+async function fetchData(url: string, method = "GET", data: any = null) {
+  let response;
+  try {
+    response = await fetch(url, {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: data ? JSON.stringify(data) : undefined,
+    });
+  } catch (e) {
+    throw new Error("Could not fetch");
+  }
   try {
     return await response.json();
   } catch {
@@ -13,6 +20,11 @@ async function fetchData(url: string) {
   }
 }
 
+/**
+ * Get data from URL on mount.
+ *
+ * @param url
+ */
 export default function useFetch<M>(
   url: string
 ): [M, boolean] | [null, boolean] {
@@ -28,4 +40,8 @@ export default function useFetch<M>(
   }, [url]);
 
   return [data, fetching];
+}
+
+export async function put(url: string, data: any) {
+  return await fetchData(url, "PUT", data);
 }

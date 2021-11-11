@@ -5,13 +5,19 @@ import { Article } from "./model";
 import { formatDateTime } from "./util";
 
 export default function ArticleList({ count = 0 }) {
-  const [articles, fetching]: [Article[] | null, boolean] = useFetch<Article[]>(
-    "http://localhost:3000/articles"
-  );
+  const url = "http://localhost:3000/articles/";
+  const [articles, fetching]: [Article[] | null, boolean] =
+    useFetch<Article[]>(url);
+
+  if (!articles) {
+    return (
+      <div id="Articles">{fetching ? <p>Fetching articles...</p> : null}</div>
+    );
+  }
 
   return (
     <div id="ArticleList">
-      {articles ? (
+      {articles.length > 0 ? (
         <ul>
           {articles.slice(0, count || undefined).map((a: Article) => (
             <li key={a.id} className="list-article">
@@ -23,10 +29,8 @@ export default function ArticleList({ count = 0 }) {
             </li>
           ))}
         </ul>
-      ) : fetching ? (
-        <p>Fetching articles...</p>
       ) : (
-        <p>No articles found.</p>
+        <p className="notice">No articles found.</p>
       )}
     </div>
   );

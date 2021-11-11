@@ -1,35 +1,39 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Article } from "./model";
 import useFetch from "./fetch";
 import { formatDateTime } from "./util";
 
 export default function Article() {
   const params = useParams();
-  const id = params.id;
-  const [article, fetching]: [Article | null, boolean] = useFetch<Article>(
-    `http://localhost:3000/articles/${id}`
-  );
+  const url = `http://localhost:3000/articles/${params.id}`;
+  const [article, fetching]: [Article | null, boolean] = useFetch<Article>(url);
 
   if (!article) {
-    return null;
+    return (
+      <div id="Article">{fetching ? <p>Fetching article...</p> : null}</div>
+    );
   }
 
   return (
-    <div id="Article">
-      {fetching ? (
-        <p>Fetching article...</p>
-      ) : (
-        <>
-          <h2>{article.title}</h2>
-          <p>
-            <i>by {article.author}</i>
-          </p>
-          <p className="small">Created {formatDateTime(article.created_at)}</p>
-          <hr />
-          <p>{article.body}</p>
-        </>
-      )}
+    <div id="Article" className="col">
+      <h2>{article.title}</h2>
+
+      <i>by {article.author}</i>
+
+      <div className="small">Created {formatDateTime(article.created_at)}</div>
+
+      <hr />
+
+      <div>{article.body}</div>
+
+      <hr />
+
+      <div className="row">
+        <Link to={`/articles/${article.id}/edit`} className="button primary">
+          Edit
+        </Link>
+      </div>
     </div>
   );
 }

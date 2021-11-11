@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import Home from "./Home";
 import ArticleList from "./ArticleList";
 import Article from "./Article";
+import ArticleForm from "./ArticleForm";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
@@ -16,6 +17,7 @@ ReactDOM.render(
           <Route path="" element={<Home />} />
           <Route path="articles" element={<ArticleList />} />
           <Route path="articles/:id" element={<Article />} />
+          <Route path="articles/:id/edit" element={<ArticleForm />} />
           <Route
             path="*"
             element={
